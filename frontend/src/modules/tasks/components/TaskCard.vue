@@ -3,7 +3,7 @@
 	<app-drop @drop="$emit('drop', $event)">
 		<!--      Компонент AppDrag определяет какая задача перемещается -->
 		<app-drag :transfer-data="task">
-			<div class="task">
+			<div class="task" @click="router.push({ path: `/${task.id}` })">
 				<!--        Этот блок показывает пользователя, который работает над задачей-->
 				<div v-if="task.user" class="task__user">
 					<div class="task__avatar">
@@ -44,6 +44,9 @@ import AppDrag from '@/commom/components/AppDrag.vue'
 import AppDrop from '@/commom/components/AppDrop.vue'
 import TaskCardTags from './TaskCardTags.vue'
 import { getImage } from '@/commom/helpers'
+import {useRouter} from 'vue-router'
+
+const router = useRouter()
 
 const props = defineProps({
   task: {

@@ -4,19 +4,18 @@
 		:filters="state.filters"
 		@update-tasks="updateTasks"
 	>
-	  <home-view
-		  :tasks="filteredTasks"
-		  :filters="state.filters"
-		  @update-tasks="updateTasks"
-		  @apply-filters="applyFilters"
-	  />
+    <router-view
+        :tasks="filteredTasks"
+        :filters="state.filters"
+        @update-tasks="updateTasks"
+        @apply-filters="applyFilters"
+    />
 	</app-layout>
   </template>
   
   <script setup>
   import { reactive, computed } from 'vue'
   import { AppLayout } from '@/layouts'
-  import { HomeView } from '@/views'
   import { normalizeTask } from './commom/helpers'
   import tasks from './mocks/tasks.json'
   
